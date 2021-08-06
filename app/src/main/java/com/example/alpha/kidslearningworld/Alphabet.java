@@ -65,13 +65,12 @@ public class Alphabet extends AppCompatActivity  implements TextToSpeech.OnInitL
         left.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if(c != null){
-                    if(c.getCount()>0){
-                        c.moveToPrevious();
-                        showRecords();
-                    }
-                }
 
+                c.moveToPrevious();
+                if (c.isBeforeFirst()){
+                    c.moveToLast();
+                }
+                showRecords();
             }
         });
 
@@ -79,6 +78,9 @@ public class Alphabet extends AppCompatActivity  implements TextToSpeech.OnInitL
             @Override
             public void onClick(View v) {
                c.moveToNext();
+                if (c.isAfterLast()){
+                    c.moveToFirst();
+                }
                 showRecords();
             }
         });

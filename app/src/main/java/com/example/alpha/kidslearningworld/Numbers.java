@@ -64,7 +64,11 @@ public class Numbers extends AppCompatActivity  implements TextToSpeech.OnInitLi
         left.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+
                 c.moveToPrevious();
+                if (c.isBeforeFirst()){
+                    c.moveToLast();
+                }
                 showRecords();
             }
         });
@@ -73,6 +77,9 @@ public class Numbers extends AppCompatActivity  implements TextToSpeech.OnInitLi
             @Override
             public void onClick(View v) {
                 c.moveToNext();
+                if (c.isAfterLast()){
+                    c.moveToFirst();
+                }
                 showRecords();
             }
         });
